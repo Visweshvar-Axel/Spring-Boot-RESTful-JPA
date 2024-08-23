@@ -3,9 +3,11 @@ package com.msqljpa.JPAWeb.Service;
 import com.msqljpa.JPAWeb.entity.Student;
 import com.msqljpa.JPAWeb.repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class StudentServiceImpl implements StudentService{
     @Autowired
     StudentRepo studentRepo;
