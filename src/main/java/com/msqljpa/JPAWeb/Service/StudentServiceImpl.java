@@ -11,16 +11,19 @@ public class StudentServiceImpl implements StudentService{
     StudentRepo studentRepo;
     @Override
     public List<Student> getAll() {
-        return null;
+        return studentRepo.findAll();
     }
 
     @Override
     public Student add(Student student) {
-        return null;
+        return studentRepo.save(student);
     }
 
     @Override
     public boolean deleteById(Long id) {
-        return false;
+        if (studentRepo.findById(id).isPresent())
+        studentRepo.deleteById(id);
+        else return false;
+        return true;
     }
 }
