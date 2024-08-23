@@ -1,6 +1,7 @@
 package com.msqljpa.JPAWeb.Service;
 
 import com.msqljpa.JPAWeb.entity.Student;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

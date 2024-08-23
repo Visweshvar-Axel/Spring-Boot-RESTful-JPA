@@ -1,7 +1,6 @@
 package com.msqljpa.JPAWeb.controller;
 
 import com.msqljpa.JPAWeb.Service.StudentService;
-import com.msqljpa.JPAWeb.Service.StudentServiceImpl;
 import com.msqljpa.JPAWeb.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class StudentController {
     @Autowired
-    private StudentServiceImpl studentService;
+    private StudentService studentService;
     ResponseEntity<?> responseEntity;
     @GetMapping("/students")
     public ResponseEntity<?> getAllStudents(){
@@ -22,13 +21,13 @@ public class StudentController {
         responseEntity = new ResponseEntity<List<Student>>(res, HttpStatus.ACCEPTED);
         return responseEntity;
     }
-    @GetMapping("/students/{id}")
-    public ResponseEntity<?> getStudentById(@PathVariable long id){
-        return responseEntity;
+    @PostMapping("/add")
+    public ResponseEntity<?> addStudent(@RequestBody Student student){
+        return new ResponseEntity<Student>(studentService.add(student),HttpStatus.CREATED);
     }
     @DeleteMapping("/students/{id}")
-    public ResponseEntity<?> deleteStudents(@PathVariable long id){
-        return responseEntity;
+    public boolean deleteStudents(@PathVariable long id){
+        return studentService.deleteById(id);
     }
 
 }
